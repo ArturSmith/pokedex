@@ -72,4 +72,8 @@ dependencies {
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
     implementation("com.google.dagger:dagger:2.48.1")
     kapt("com.google.dagger:dagger-compiler:2.48.1")
+    implementation("androidx.navigation:navigation-compose:2.8.3")
+    implementation("androidx.compose.runtime:runtime-livedata:1.7.4")
+
+
 }
