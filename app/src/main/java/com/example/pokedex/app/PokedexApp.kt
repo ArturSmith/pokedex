@@ -7,10 +7,9 @@ import com.example.pokedex.di.ApplicationComponent
 import com.example.pokedex.di.DaggerApplicationComponent
 
 class PokedexApp : Application() {
-    lateinit var applicationComponent: ApplicationComponent
-    override fun onCreate() {
-        super.onCreate()
-        applicationComponent = DaggerApplicationComponent.factory().create(this)
+
+    val applicationComponent: ApplicationComponent by lazy {
+        DaggerApplicationComponent.factory().create(this)
     }
 }
 
