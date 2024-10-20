@@ -15,7 +15,7 @@ interface PokemonRepository {
 
     suspend fun getPokemonSpeciesByName(name: String): Result<PokemonSpecies>
 
-    suspend fun getPokemonList(limit: Int, offset: Int): Result<PokemonList>
+    suspend fun getPokemonList(): Result<PokemonList>
 
     suspend fun bookmarkPokemon(id: Int)
 
@@ -26,4 +26,8 @@ interface PokemonRepository {
     fun observeBookmarkedPokemons(): Flow<List<Pokemon?>>
 
     fun observeChosenPokemons(): Flow<List<Pokemon?>>
+
+    fun setLastSeenPokemonName(name: String)
+
+    fun getLastSeenPokemonName(): String
 }

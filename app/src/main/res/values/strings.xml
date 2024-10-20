@@ -1,5 +1,24 @@
 <resources>
     <string name="app_name">Pokedex</string>
+    <string name="pokedex_collection">Pokedex collection</string>
     <string name="level">Level:</string>
-    <string name="empty_pokemons">You do not have any chosen pokemon</string>
+    <string name="empty_pokemons">Add pokemon to your collection</string>
+    <string name="choose_pokemon">Choose pokemon</string>
+    <string name="collect">Collect</string>
+    <string name="next">Next</string>
+    <string name="cant_load_pokemon">Can not load pokemon, try again</string>
+    <string name="empty_favorite_list">You do not have any favorite pokemon</string>
+    <string name="bookmarks">Bookmarks</string>
+    <string name="experience">Experience</string>
+    <string name="height">Height</string>
+    <string name="weight">Weight</string>
+    <string name="gender_rate">Gender rate</string>
+    <string name="base_happiness">Base happiness</string>
+    <string name="color">Color</string>
+    <string name="is_legendary">Legendary</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="shape">Shape</string>
+    <string name="generation">Generation</string>
+    <string name="evolution">Evolution</string>
 </resources>

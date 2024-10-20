@@ -7,7 +7,7 @@ import javax.inject.Inject
 class GetPokemonList @Inject constructor(
     private val pokemonRepository: PokemonRepository
 ) {
-    suspend operator fun invoke(limit: Int, offset: Int): Result<PokemonList> {
-        return pokemonRepository.getPokemonList(limit, offset)
+    suspend operator fun invoke(): Result<PokemonList> {
+        return pokemonRepository.getPokemonList()
     }
 }
