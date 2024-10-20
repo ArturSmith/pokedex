@@ -2,6 +2,12 @@
 
 package com.example.pokedex.app.ui.home
 
+import androidx.compose.animation.core.LinearEasing
+import androidx.compose.animation.core.RepeatMode
+import androidx.compose.animation.core.animateFloat
+import androidx.compose.animation.core.infiniteRepeatable
+import androidx.compose.animation.core.rememberInfiniteTransition
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -29,6 +35,8 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.scale
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
@@ -55,20 +63,13 @@ fun HomeContent(
     Scaffold(
         floatingActionButtonPosition = FabPosition.Center,
         floatingActionButton = {
-            IconButton(
-                modifier = Modifier.size(70.dp),
-                onClick = onChoosePokemonClicked
-            ) {
-                Icon(
-                    painter = painterResource(R.drawable.img),
-                    contentDescription = null,
-                    tint = Color.Unspecified
-                )
-            }
+            FAButton { onChoosePokemonClicked() }
         },
         topBar = {
             HomeContentTopAppBar(onSearchClicked, onBookmarkClicked)
-        }
+        },
+        containerColor = Color.Transparent
+   
     ) { paddingValues ->
 
         Box(
@@ -77,13 +78,6 @@ fun HomeContent(
                 .fillMaxSize(),
             contentAlignment = Alignment.Center
         ) {
-            Image(
-                painterResource(R.drawable.pokemon_background),
-                contentDescription = null,
-                modifier = Modifier.fillMaxSize(),
-                contentScale = ContentScale.Crop
-            )
-
             when (val currentState = state) {
                 HomeState.EmptyPokemons -> {
                     Text(
@@ -127,6 +121,7 @@ private fun HomePokemonsState(
     }
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 private fun HomeContentTopAppBar(
     onSearchClicked: () -> Unit,
@@ -164,6 +159,35 @@ private fun HomeContentTopAppBar(
         },
         colors = TopAppBarDefaults.topAppBarColors(containerColor = Color.Transparent)
     )
+}
+
+@Composable
+private fun FAButton(
+    onChoosePokemonClicked: () -> Unit,
+) {
+    val infiniteTransition = rememberInfiniteTransition(label = "")
+    val scale by infiniteTransition.animateFloat(
+        initialValue = 1f,
+        targetValue = 1.2f,
+        animationSpec = infiniteRepeatable(
+            animation = tween(durationMillis = 800, easing = LinearEasing),
+            repeatMode = RepeatMode.Reverse
+        ),
+        label = ""
+    )
+
+    IconButton(
+        modifier = Modifier
+            .size(70.dp)
+            .scale(scale),
+        onClick = onChoosePokemonClicked
+    ) {
+        Icon(
+            painter = painterResource(R.drawable.pokemon_egg),
+            contentDescription = null,
+            tint = Color.Unspecified
+        )
+    }
 }
 
 

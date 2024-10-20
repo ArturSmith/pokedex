@@ -78,6 +78,6 @@ dependencies {
     kapt("androidx.room:room-compiler:2.6.1")
     implementation("com.github.bumptech.glide:compose:1.0.0-beta01")
     implementation("com.google.accompanist:accompanist-systemuicontroller:0.30.1")
-
-
+    implementation("com.google.accompanist:accompanist-pager:0.30.1")
+    implementation("com.google.accompanist:accompanist-pager-indicators:0.30.1")
 }
