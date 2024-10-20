@@ -1,4 +1,4 @@
-package com.example.pokedex.data.network.mappers
+package com.example.pokedex.data.mappers
 
 import com.example.pokedex.data.network.models.ChainLinkDto
 import com.example.pokedex.data.network.models.EvolutionChainResponseDto
@@ -13,8 +13,8 @@ fun EvolutionChainResponseDto.toEntity(): EvolutionChain {
 
 private fun ChainLinkDto.toEntity(): EvolutionChain {
     return EvolutionChain(
-        speciesDto.name,
-        speciesDto.url,
+        speciesDto.name ?: "",
+        speciesDto.url ?: "",
         evolvesTo.map { it.toEntity() },
         evolutionDetailDto.map {
             EvolutionDetail(
