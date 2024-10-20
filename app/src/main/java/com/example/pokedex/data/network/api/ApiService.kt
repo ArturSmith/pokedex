@@ -1,9 +1,8 @@
 package com.example.pokedex.data.network.api
 
-import com.example.pokedex.data.network.models.EvolutionChainResponseDto
-import com.example.pokedex.data.network.models.PokemonListResponseDto
-import com.example.pokedex.data.network.models.PokemonResponseDto
-import com.example.pokedex.data.network.models.PokemonSpeciesResponseDto
+import com.example.pokedex.data.network.dto.PokemonListResponseDto
+import com.example.pokedex.data.network.dto.PokemonResponseDto
+import com.example.pokedex.data.network.dto.SpeciesResponseDto
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
@@ -21,19 +20,14 @@ interface ApiService {
     ): PokemonResponseDto
 
     @GET("pokemon-species/{id}")
-    suspend fun getPokemonSpecies(
+    suspend fun getPokemonSpeciesById(
         @Path("id") id: Int
-    ): PokemonSpeciesResponseDto
+    ): SpeciesResponseDto
 
     @GET("pokemon-species/{name}")
     suspend fun getPokemonSpeciesByName(
         @Path("name") name: String
-    ): PokemonSpeciesResponseDto
-
-    @GET("evolution-chain/{id}")
-    suspend fun getEvolutionChain(
-        @Path("id") id: Int
-    ): EvolutionChainResponseDto
+    ): SpeciesResponseDto
 
     @GET("pokemon")
     suspend fun getPokemonList(

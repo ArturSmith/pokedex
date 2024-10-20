@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Pokedex</string>
+    <string name="level">Level:</string>
+    <string name="empty_pokemons">You do not have any chosen pokemon</string>
 </resources>

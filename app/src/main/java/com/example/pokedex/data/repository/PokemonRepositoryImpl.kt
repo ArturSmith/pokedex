@@ -3,17 +3,13 @@ package com.example.pokedex.data.repository
 import com.example.pokedex.data.local.db.Dao
 import com.example.pokedex.data.local.model.BookmarkedPokemonDbModel
 import com.example.pokedex.data.local.model.ChosenPokemonDbModel
-import com.example.pokedex.data.network.api.ApiService
 import com.example.pokedex.data.mappers.toEntity
-import com.example.pokemon.domain.entity.EvolutionChain
+import com.example.pokedex.data.network.api.ApiService
 import com.example.pokemon.domain.entity.Pokemon
 import com.example.pokemon.domain.entity.PokemonList
 import com.example.pokemon.domain.entity.PokemonSpecies
 import com.example.pokemon.domain.repository.PokemonRepository
-import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
@@ -21,6 +17,7 @@ class PokemonRepositoryImpl @Inject constructor(
     private val apiService: ApiService,
     private val dao: Dao
 ) : PokemonRepository {
+
     override suspend fun getPokemonById(id: Int): Result<Pokemon> {
         return try {
             val response = apiService.getPokemon(id).toEntity()
@@ -41,7 +38,7 @@ class PokemonRepositoryImpl @Inject constructor(
 
     override suspend fun getPokemonSpeciesById(id: Int): Result<PokemonSpecies> {
         return try {
-            val response = apiService.getPokemonSpecies(id).toEntity()
+            val response = apiService.getPokemonSpeciesById(id).toEntity()
             Result.success(response)
         } catch (e: Exception) {
             Result.failure(e)
@@ -51,15 +48,6 @@ class PokemonRepositoryImpl @Inject constructor(
     override suspend fun getPokemonSpeciesByName(name: String): Result<PokemonSpecies> {
         return try {
             val response = apiService.getPokemonSpeciesByName(name).toEntity()
-            Result.success(response)
-        } catch (e: Exception) {
-            Result.failure(e)
-        }
-    }
-
-    override suspend fun getEvolutionChain(id: Int): Result<EvolutionChain> {
-        return try {
-            val response = apiService.getEvolutionChain(id).toEntity()
             Result.success(response)
         } catch (e: Exception) {
             Result.failure(e)

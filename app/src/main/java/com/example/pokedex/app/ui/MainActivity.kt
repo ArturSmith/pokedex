@@ -11,6 +11,7 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.pokedex.app.getApplicationComponent
@@ -23,6 +24,7 @@ import com.example.pokedex.app.ui.home.HomeContent
 import com.example.pokedex.app.ui.pokemon.PokemonContent
 import com.example.pokedex.app.ui.search.SearchContent
 import com.example.pokedex.app.ui.theme.PokedexTheme
+import com.google.accompanist.systemuicontroller.rememberSystemUiController
 
 class MainActivity : ComponentActivity() {
 
@@ -31,6 +33,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
 
+            SystemBarController()
             val component = getApplicationComponent()
             val navHostController = rememberNavigationState()
             PokedexTheme {
@@ -99,5 +102,19 @@ class MainActivity : ComponentActivity() {
             }
         }
     }
+}
+
+@Composable
+fun SystemBarController() {
+    val systemUiController = rememberSystemUiController()
+    val useDarkIcons = false
+
+    systemUiController.setSystemBarsColor(
+        color = Color.Red,
+        darkIcons = false
+    )
+
+    systemUiController.isStatusBarVisible = false
+
 }
 
