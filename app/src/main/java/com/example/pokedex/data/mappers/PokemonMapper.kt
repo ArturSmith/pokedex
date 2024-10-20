@@ -1,35 +1,37 @@
 package com.example.pokedex.data.mappers
 
-import com.example.pokedex.data.network.models.PokemonListResponseDto
-import com.example.pokedex.data.network.models.PokemonListResultDto
-import com.example.pokedex.data.network.models.PokemonResponseDto
-import com.example.pokedex.data.network.models.PokemonSpeciesResponseDto
+import com.example.pokedex.data.network.dto.PokemonListResponseDto
+import com.example.pokedex.data.network.dto.PokemonResponseDto
+import com.example.pokedex.data.network.dto.SpeciesResponseDto
 import com.example.pokemon.domain.entity.Pokemon
 import com.example.pokemon.domain.entity.PokemonList
-import com.example.pokemon.domain.entity.PokemonListResult
 import com.example.pokemon.domain.entity.PokemonSpecies
 
 fun PokemonResponseDto.toEntity(): Pokemon {
     return Pokemon(
-        id ?: 0,
-        name ?: "",
-        speciesDto?.name ?: "",
-        speciesDto?.url ?: "",
-        spritesDto?.frontDefault ?: "",
-        spritesDto?.backDefault ?: ""
+        id = id ?: 0,
+        name = name ?: "",
+        experience = experience ?: 0,
+        height = height ?: 0,
+        weight = weight ?: 0,
+        frontDefaultSprite = spritesDto?.frontDefault ?: "",
+        backDefaultSprite = spritesDto?.backDefault ?: ""
     )
 }
 
 fun PokemonListResponseDto.toEntity(): PokemonList {
-    return PokemonList(count, results.map { it.toEntity() })
+    return PokemonList(count, results.map { it.name })
 }
 
-fun PokemonSpeciesResponseDto.toEntity(): PokemonSpecies {
-    return PokemonSpecies(evolutionChainDto.url)
-}
-
-private fun PokemonListResultDto.toEntity(): PokemonListResult {
-    return PokemonListResult(name, url)
+fun SpeciesResponseDto.toEntity(): PokemonSpecies {
+    return PokemonSpecies(
+        genderRate = genderRate ?: 0,
+        baseHappiness = baseHappiness ?: 0,
+        color = color?.color ?: "",
+        isLegendary = isLegendary ?: false,
+        shape = shape?.name ?: "",
+        generation = generation?.name ?: ""
+    )
 }
 
 

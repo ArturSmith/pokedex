@@ -1,4 +1,4 @@
-package com.example.pokedex.data.network.models
+package com.example.pokedex.data.network.dto
 
 import com.google.gson.annotations.SerializedName
 
@@ -7,10 +7,14 @@ data class PokemonResponseDto(
     val id: Int?,
     @SerializedName("name")
     val name: String?,
+    @SerializedName("base_experience")
+    val experience: Int?,
+    @SerializedName("height")
+    val height: Int?,
+    @SerializedName("weight")
+    val weight: Int?,
     @SerializedName("sprites")
     val spritesDto: SpritesDto?,
-    @SerializedName("species")
-    val speciesDto: SpeciesDto?
 )
 
 data class SpritesDto(
@@ -20,9 +24,3 @@ data class SpritesDto(
     val backDefault: String?
 )
 
-data class SpeciesDto(
-    @SerializedName("name")
-    val name: String?,
-    @SerializedName("url")
-    val url: String?
-)
