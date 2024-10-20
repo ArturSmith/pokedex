@@ -8,7 +8,6 @@ import androidx.compose.animation.core.animateFloat
 import androidx.compose.animation.core.infiniteRepeatable
 import androidx.compose.animation.core.rememberInfiniteTransition
 import androidx.compose.animation.core.tween
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
@@ -19,8 +18,8 @@ import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Bookmark
 import androidx.compose.material.icons.filled.Search
-import androidx.compose.material.icons.filled.Star
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FabPosition
@@ -37,8 +36,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
@@ -69,7 +66,7 @@ fun HomeContent(
             HomeContentTopAppBar(onSearchClicked, onBookmarkClicked)
         },
         containerColor = Color.Transparent
-   
+
     ) { paddingValues ->
 
         Box(
@@ -114,7 +111,11 @@ private fun HomePokemonsState(
         items(
             items = pokemons,
         ) { item: Pokemon ->
-            PokemonCard(item) {
+            PokemonCard(
+                pokemon = item,
+                isMarkButtonVisible = false,
+                onMark = {}
+            ) {
                 onPokemonClicked(it)
             }
         }
@@ -130,7 +131,7 @@ private fun HomeContentTopAppBar(
     TopAppBar(
         title = {
             Text(
-                text = stringResource(R.string.app_name),
+                text = stringResource(R.string.pokedex_collection),
                 color = Color.White,
                 fontWeight = FontWeight.Bold
             )
@@ -151,7 +152,7 @@ private fun HomeContentTopAppBar(
                 onBookmarkClicked()
             }) {
                 Icon(
-                    imageVector = Icons.Default.Star,
+                    imageVector = Icons.Default.Bookmark,
                     contentDescription = null,
                     tint = Color.White
                 )

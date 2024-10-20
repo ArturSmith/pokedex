@@ -10,13 +10,16 @@ import com.example.pokemon.domain.entity.PokemonList
 import com.example.pokemon.domain.entity.PokemonSpecies
 import com.example.pokemon.domain.repository.PokemonRepository
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
 class PokemonRepositoryImpl @Inject constructor(
     private val apiService: ApiService,
-    private val dao: Dao
+    private val dao: Dao,
 ) : PokemonRepository {
+
+    private val _lastSeenPokemonName = MutableStateFlow("")
 
     override suspend fun getPokemonById(id: Int): Result<Pokemon> {
         return try {
@@ -54,9 +57,9 @@ class PokemonRepositoryImpl @Inject constructor(
         }
     }
 
-    override suspend fun getPokemonList(limit: Int, offset: Int): Result<PokemonList> {
+    override suspend fun getPokemonList(): Result<PokemonList> {
         return try {
-            val response = apiService.getPokemonList(limit, offset).toEntity()
+            val response = apiService.getPokemonList().toEntity()
             Result.success(response)
         } catch (e: Exception) {
             Result.failure(e)
@@ -89,5 +92,13 @@ class PokemonRepositoryImpl @Inject constructor(
                 getPokemonById(it.id).getOrNull()
             }
         }
+    }
+
+    override fun setLastSeenPokemonName(name: String) {
+        _lastSeenPokemonName.value = name
+    }
+
+    override fun getLastSeenPokemonName(): String {
+        return _lastSeenPokemonName.value
     }
 }

@@ -15,8 +15,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import com.example.pokedex.R
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.pokedex.app.getApplicationComponent
 import com.example.pokedex.app.navigation.AppNavGraph
 import com.example.pokedex.app.navigation.Screen
@@ -137,6 +135,7 @@ private fun SystemBarController() {
         color = Color.Red,
         darkIcons = false
     )
+    systemUiController.setSystemBarsColor(Color.Red)
     systemUiController.isStatusBarVisible = false
 }
 
