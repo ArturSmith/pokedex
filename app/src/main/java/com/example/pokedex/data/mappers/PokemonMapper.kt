@@ -1,4 +1,4 @@
-package com.example.pokedex.data.network.mappers
+package com.example.pokedex.data.mappers
 
 import com.example.pokedex.data.network.models.PokemonListResponseDto
 import com.example.pokedex.data.network.models.PokemonListResultDto
@@ -11,12 +11,12 @@ import com.example.pokemon.domain.entity.PokemonSpecies
 
 fun PokemonResponseDto.toEntity(): Pokemon {
     return Pokemon(
-        id,
-        name,
-        speciesDto.name,
-        speciesDto.url,
-        spritesDto.frontDefault ?: "",
-        spritesDto.backDefault ?: ""
+        id ?: 0,
+        name ?: "",
+        speciesDto?.name ?: "",
+        speciesDto?.url ?: "",
+        spritesDto?.frontDefault ?: "",
+        spritesDto?.backDefault ?: ""
     )
 }
 

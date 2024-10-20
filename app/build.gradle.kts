@@ -74,6 +74,7 @@ dependencies {
     kapt("com.google.dagger:dagger-compiler:2.48.1")
     implementation("androidx.navigation:navigation-compose:2.8.3")
     implementation("androidx.compose.runtime:runtime-livedata:1.7.4")
-
+    implementation("androidx.room:room-ktx:2.6.1")
+    kapt("androidx.room:room-compiler:2.6.1")
 
 }
