@@ -3,7 +3,6 @@ Mini Pokédex
 Project Description
 Mini Pokédex is an application developed for a family whose kids love playing Pokémon GO. The app allows parents and children to discover a new Pokémon every day, learn interesting facts about them, and save their favorite Pokémon for later.
 
-Version
 Current Version: 1.0.0
 
 -------------------------------------------------------------------------------------------------------------------------
