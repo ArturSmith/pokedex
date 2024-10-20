@@ -2,7 +2,6 @@ package com.example.pokedex.app.ui.home
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.pokedex.domain.usecase.ObserveBookmarkedPokemonsUseCase
 import com.example.pokedex.domain.usecase.ObserveChosenPokemonsUseCase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -28,6 +27,5 @@ class HomeViewModel @Inject constructor(
             }
         }
     }
-
 
 }
