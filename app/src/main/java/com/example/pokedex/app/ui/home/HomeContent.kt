@@ -19,7 +19,6 @@ import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Bookmark
-import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FabPosition
@@ -63,12 +62,11 @@ fun HomeContent(
             FAButton { onChoosePokemonClicked() }
         },
         topBar = {
-            HomeContentTopAppBar(onSearchClicked, onBookmarkClicked)
+            TopBar{onBookmarkClicked()}
         },
         containerColor = Color.Transparent
 
     ) { paddingValues ->
-
         Box(
             modifier = Modifier
                 .padding(paddingValues)
@@ -124,8 +122,7 @@ private fun HomePokemonsState(
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-private fun HomeContentTopAppBar(
-    onSearchClicked: () -> Unit,
+private fun TopBar(
     onBookmarkClicked: () -> Unit,
 ) {
     TopAppBar(
@@ -135,17 +132,6 @@ private fun HomeContentTopAppBar(
                 color = Color.White,
                 fontWeight = FontWeight.Bold
             )
-        },
-        navigationIcon = {
-            IconButton(onClick = {
-                onSearchClicked()
-            }) {
-                Icon(
-                    imageVector = Icons.Default.Search,
-                    contentDescription = null,
-                    tint = Color.White
-                )
-            }
         },
         actions = {
             IconButton(onClick = {
