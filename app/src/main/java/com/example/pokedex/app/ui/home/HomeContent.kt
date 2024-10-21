@@ -62,7 +62,7 @@ fun HomeContent(
             FAButton { onChoosePokemonClicked() }
         },
         topBar = {
-            TopAppBar(onSearchClicked)
+            TopBar{onBookmarkClicked()}
         },
         containerColor = Color.Transparent
 
@@ -122,7 +122,7 @@ private fun HomePokemonsState(
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-private fun TopAppBar(
+private fun TopBar(
     onBookmarkClicked: () -> Unit,
 ) {
     TopAppBar(
