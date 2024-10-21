@@ -119,8 +119,3 @@ Jetpack Compose Navigation
 Acomponist
 
 
-Adding interactive games and quizzes about Pokémon.
-Contact
-Author: Your Name
-Email: your.email@example.com
-GitHub: https://github.com/yourusername
