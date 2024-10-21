@@ -64,16 +64,28 @@ Home Screen:
 Displays a list of collected Pokemons.
 Button to go to the screen to choose new Pokemon.
 Bookmarks section.
+Search section.
 
 Pokémon Detail Page:
 
 Shows the Pokémon's image, name, and basic characteristics.
 Ability to add the Pokémon to bookmarks.
+Ability to add the Pokemon to collection.
 Note: Evolution details and requirements will be added in the next version.
 
 Bookmarks:
 
 A section to access favorited Pokémon quickly.
+Ability to unmark and mark the Pokemon.
+Ability to open detail page of the Pokemon.
+
+Choose Pokemon Page:
+
+Shows one random Pokemon.
+Ability to generate new Pokemon.
+Ability to open detail page.
+Ability to add Pokemon to bookmarks.
+Ability to add the Pokemon to collection.
 
 -------------------------------------------------------------------------------------------------------------------------
 Upcoming Features
