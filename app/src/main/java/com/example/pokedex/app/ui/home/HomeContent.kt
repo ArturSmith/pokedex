@@ -63,12 +63,11 @@ fun HomeContent(
             FAButton { onChoosePokemonClicked() }
         },
         topBar = {
-            HomeContentTopAppBar(onSearchClicked, onBookmarkClicked)
+            TopAppBar(onSearchClicked)
         },
         containerColor = Color.Transparent
 
     ) { paddingValues ->
-
         Box(
             modifier = Modifier
                 .padding(paddingValues)
@@ -124,8 +123,7 @@ private fun HomePokemonsState(
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-private fun HomeContentTopAppBar(
-    onSearchClicked: () -> Unit,
+private fun TopAppBar(
     onBookmarkClicked: () -> Unit,
 ) {
     TopAppBar(
@@ -135,17 +133,6 @@ private fun HomeContentTopAppBar(
                 color = Color.White,
                 fontWeight = FontWeight.Bold
             )
-        },
-        navigationIcon = {
-            IconButton(onClick = {
-                onSearchClicked()
-            }) {
-                Icon(
-                    imageVector = Icons.Default.Search,
-                    contentDescription = null,
-                    tint = Color.White
-                )
-            }
         },
         actions = {
             IconButton(onClick = {
