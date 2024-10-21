@@ -1,6 +1,7 @@
 Mini Pokédex
 
 Project Description
+
 Mini Pokédex is an application developed for a family whose kids love playing Pokémon GO. The app allows parents and children to discover a new Pokémon every day, learn interesting facts about them, and save their favorite Pokémon for later.
 
 Current Version: 1.0.0
@@ -37,9 +38,13 @@ State Management: ViewModel and StateFlow are used for managing the app's state.
 Dependencies:
 
 Retrofit and OkHttp for network requests.
+
 Glide for image loading and caching.
+
 Jetpack Navigation Compose for navigation between screens.
+
 Roon for database.
+
 Version Control: Git is used for tracking progress and version management.
 
 -------------------------------------------------------------------------------------------------------------------------
